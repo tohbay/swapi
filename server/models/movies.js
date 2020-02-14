@@ -8,9 +8,6 @@ class Movies {
         opening_crawl: res.opening_crawl
       };
     });
-
-    console.log(movies);
-
     return callback(movies);
   }
 }

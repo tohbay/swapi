@@ -5,10 +5,14 @@ import { uuid } from 'uuidv4';
 const router = express.Router();
 
 router.get('/', function(req, res) {
-  Comments.getAll(function(err, comments) {
-    if (err) return res.json(err);
-    return res.json(comments);
-  });
+  try {
+    Comments.getAll(function(comments, err) {
+      if (err) return res.status(400).json(err);
+      return res.status(200).send(comments);
+    });
+  } catch (error) {
+    return res.status(500).send(error);
+  }
 });
 
 router.post('/', function(req, res) {
@@ -16,10 +20,14 @@ router.post('/', function(req, res) {
   const comment = req.body.comment;
   const movie_title = req.body.movie_title;
 
-  Comments.create(comment_id, comment, movie_title, function(err, result) {
-    if (err) return res.json(err);
-    return res.json(result);
-  });
+  try {
+    Comments.create(comment_id, comment, movie_title, function(result, err) {
+      if (err) return res.status(400).json(err);
+      return res.status(201).json(result);
+    });
+  } catch (error) {
+    return res.status(500).send(error);
+  }
 });
 
 module.exports = router;
