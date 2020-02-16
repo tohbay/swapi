@@ -7,11 +7,11 @@ const router = express.Router();
 router.get('/', function(req, res) {
   try {
     Comments.getAll(function(comments, err) {
-      if (err) return res.status(400).json(err);
-      return res.status(200).send(comments);
+      if (err) return res.status(400).json({ status: 400, message: err });
+      return res.status(200).send({ status: 200, data: comments });
     });
   } catch (error) {
-    return res.status(500).send(error);
+    return res.status(500).send({ status: 500, message: error });
   }
 });
 
@@ -22,11 +22,11 @@ router.post('/', function(req, res) {
 
   try {
     Comments.create(comment_id, comment, movie_title, function(result, err) {
-      if (err) return res.status(400).json(err);
-      return res.status(201).json(result);
+      if (err) return res.status(400).send({ status: 400, message: err });
+      return res.status(201).send({ status: 201, data: result });
     });
   } catch (error) {
-    return res.status(500).send(error);
+    return res.status(500).send({ status: 500, message: error });
   }
 });
 
