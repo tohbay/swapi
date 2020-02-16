@@ -14,6 +14,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const commentsRoutes = require('./controllers/comments');
+const moviesRoutes = require('./controllers/movies');
+
+app.use('/api/comments', commentsRoutes);
+app.use('/api/movies', moviesRoutes);
+
 app.get('/', function(req, res) {
   res.send('Hello World!');
 });
