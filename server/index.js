@@ -21,7 +21,7 @@ app.use('/api/movies', moviesRoutes);
 app.use('/api/characters', charactersRoutes);
 
 app.get('/', function(req, res) {
-  res.send('Hello World!');
+  res.send('Hello there, Welcome to Swapi API!');
 });
 
 app.listen(PORT, function() {
