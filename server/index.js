@@ -16,9 +16,11 @@ app.use(bodyParser.json());
 
 const commentsRoutes = require('./controllers/comments');
 const moviesRoutes = require('./controllers/movies');
+const charactersRoutes = require('./controllers/characters');
 
 app.use('/api/comments', commentsRoutes);
 app.use('/api/movies', moviesRoutes);
+app.use('/api/characters', charactersRoutes);
 
 app.get('/', function(req, res) {
   res.send('Hello World!');

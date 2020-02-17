@@ -18,4 +18,3 @@ class Movies {
 }
 
 export default Movies;
-// import characters_db from '../database/swapi-data/characters';
