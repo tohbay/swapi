@@ -1,16 +1,15 @@
-import movies_db from '../database/swapi-data/movies.json';
-import comments_db from './comments';
+import { movies } from '../database/swapi-data/movies.js';
 
 class Movies {
   static getAll(callback) {
     try {
-      const movies = movies_db.results.map(res => {
+      const allMovies = movies.results.map(res => {
         return {
           title: res.title,
           opening_crawl: res.opening_crawl
         };
       });
-      return callback(movies);
+      return callback(allMovies);
     } catch (error) {
       return error;
     }

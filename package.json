@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec babel-node server/index"
+    "start": "node build",
+    "dev": "nodemon --exec babel-node server/index",
+    "create-table": "babel-node ./server/database/createTable.js --exit",
+    "build": "babel server -d build && npm run create-table"
   },
   "repository": {
     "type": "git",
@@ -18,6 +21,7 @@
   },
   "homepage": "https://github.com/tobechukwuobitube/swapi#readme",
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.4",
     "@babel/node": "^7.8.4",
     "@babel/preset-env": "^7.8.4",

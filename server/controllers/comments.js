@@ -8,7 +8,6 @@ router.get('/', function(req, res) {
   try {
     Comments.getAll(function(comments, err) {
       if (err) return res.status(400).json({ status: 400, message: err });
-      console.log(req.connection.remoteAddress);
       return res.status(200).send({
         status: 200,
         data: {
